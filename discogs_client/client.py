@@ -2,6 +2,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import warnings
 import json
+import logging
 try:
     # python2
     from urllib import urlencode
@@ -96,6 +97,8 @@ class Client(object):
     def _request(self, method, url, data=None):
         if self.verbose:
             print(' '.join((method, url)))
+
+        logging.getLogger(__name__).debug('%s %s', method, url)
 
         self._check_user_agent()
 
